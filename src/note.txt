@@ -1,0 +1,12 @@
+=> store  (single sorce of truth)
+  -> state 
+    => (same with data - reactive)
+
+  -> mutations 
+    => task trace (time)
+
+  -> actions 
+    => methods
+
+  -> getter
+
