@@ -10,3 +10,19 @@
 
   -> getter
 
+
+=> Full Stack Developer (F / B)
+  => HTML / CSS / JS 
+    => UI/UX, Responsive Design, jQuery, Vue, React, Angular
+
+  => PHP (Laravel)
+    => API (GET / POST)
+
+  => DB
+
+  
+
+  Project Flow 
+    => Views (Home/Cart/)
+
+    => Home.Vue (products -> addtocart) LS

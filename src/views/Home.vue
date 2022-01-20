@@ -1,24 +1,48 @@
 <template>
-  <div class="home">
-    <h2 v-if="this.$store.state.loadingStatus">No Read</h2>
-    <h2 v-else>Get All Data</h2>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home container">
+    <div class="row">
+      <div class="col-md-3 mb-2" v-for="(product,index) in products" :key="index">
+        <div class="card">
+          <img :src="product.image" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <strong>{{product.price}}</strong>
+            <p class="card-text">{{product.description}}</p>
+            <a href="#" class="btn btn-primary" @click="addtocart(index)">Add</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+const axios = require('axios');
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  },
   data(){
     return {
-      
+      products: []
+    }
+  },
+  mounted(){
+    axios.get('https://fakestoreapi.com/products')
+        .then(response => {
+          this.products = response.data
+        })
+  },
+  methods:{
+    addtocart(id){
+      let product = {
+        id: this.products[id].id ,
+        title: this.products[id].title,
+        image: this.products[id].image,
+        price: this.products[id].price,
+        qty: 1
+      }
+
+      this.$store.dispatch('addtocart',product)
     }
   }
 }
